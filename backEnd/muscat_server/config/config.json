@@ -1,0 +1,30 @@
+{
+  "development": {
+    "username": "root",
+    "password": "ymshin",
+    "database": "blogservice",
+    "host": "54.255.154.173",
+    "dialect": "mysql",
+    "operatorsAliases": false,
+    "define": {
+      "timestamps": false,
+      "underscored" : true
+    }
+  },
+  "test": {
+    "username": "root",
+    "password": "ymshin",
+    "database": "blogservice",
+    "host": "54.255.154.173",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "root",
+    "password": "ymshin",
+    "database": "blogservice",
+    "host": "54.255.154.173",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  }
+}
