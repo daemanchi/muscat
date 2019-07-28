@@ -1,0 +1,66 @@
+<template>
+  <div class="toolbar-wrapper">
+
+    <div v-for="(tab, index) of tabs"
+         :key="index"
+         :class="{ active: selected === tab.value }"
+         class="tab-item">
+
+      <i class="material-icons icon">{{ tab.icon }}</i>
+      <div class="tab-name">{{ tab.name }}</div>
+
+    </div>
+
+  </div>
+
+</template>
+
+<script>
+  export default {
+    name: 'Navigation',
+    props: [ 'selected' ],
+    data () {
+      return {
+        tabs: [
+          { icon: 'home', name: '홈', value: 'Home' },
+          { icon: 'description', name: '모아보기', value: 'Feed' },
+          { icon: 'notifications', name: '알림', value: 'Notifications' },
+          { icon: 'face', name: '내정보', value: 'MyPage' },
+        ]
+      };
+    }
+  }
+</script>
+
+<style lang="scss" scoped>
+  .toolbar-wrapper {
+    background-color: white;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+
+    box-sizing: border-box;
+
+    width: 100vw;
+    height: 56px;
+    padding: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .tab-item {
+    min-width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #e0e0e0;
+    &.active {
+      color: #87bf8e;
+    }
+    .tab-name {
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+</style>
