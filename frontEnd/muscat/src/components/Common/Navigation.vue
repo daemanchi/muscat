@@ -6,7 +6,9 @@
          :class="{ active: selected === tab.value }"
          class="tab-item">
 
-      <i class="material-icons icon">{{ tab.icon }}</i>
+      <div class="icon-holder">
+        <i :class="tab.icon"></i>
+      </div>
       <div class="tab-name">{{ tab.name }}</div>
 
     </div>
@@ -22,10 +24,10 @@
     data () {
       return {
         tabs: [
-          { icon: 'home', name: '홈', value: 'Home' },
-          { icon: 'description', name: '모아보기', value: 'Feed' },
-          { icon: 'notifications', name: '알림', value: 'Notifications' },
-          { icon: 'face', name: '내정보', value: 'MyPage' },
+          { icon: 'muscat-icon-home', name: '홈', value: 'Home' },
+          { icon: 'muscat-icon-feed', name: '모아보기', value: 'Feed' },
+          { icon: 'muscat-icon-bell', name: '알림', value: 'Notifications' },
+          { icon: 'muscat-icon-smile', name: '내정보', value: 'MyPage' },
         ]
       };
     }
@@ -62,5 +64,11 @@
       font-size: 14px;
       line-height: 17px;
     }
+  }
+
+  .icon-holder {
+    width: 24px;
+    height: 24px;
+    margin: auto;
   }
 </style>
