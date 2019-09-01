@@ -9,17 +9,10 @@ const AuthRoutes = require( './routes/auth/index');
 const BlogRoutes = require( './routes/blog/index');
 const NotiRoutes = require( './routes/noti/index');
 const UserRoutes = require( './routes/user/index');
-const Sequelize = require('sequelize');
-/*
-const SequelizeAuto = require('sequelize-auto');
-const auto = new SequelizeAuto('blogservice','root','ymshin',{
-  host:'54.255.154.173',
-  port:'3306'
-});
-auto.run((err)=>{
-  if(err) throw err;
-});
-*/
+
+
+
+
 
 // ENV
 require('dotenv').config();
@@ -45,6 +38,6 @@ app.listen(port, function(){
 
 
 //app.use('/'     ,AuthRoutes);
-//app.use('/user' ,UserRoutes);
+app.use('/user' ,UserRoutes);
 //app.use('/blog' ,BlogRoutes);
 //app.use('/noti' ,NotiRoutes);
