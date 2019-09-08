@@ -1,21 +1,21 @@
 {
   "development": {
     "username": "root",
-    "password": "ymshin",
-    "database": "blogservice",
-    "host": "54.255.154.173",
+    "password": "134679",
+    "database": "muscat",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false,
     "define": {
       "timestamps": false,
-      "underscored" : true
+      "underscored" : false
     }
   },
   "test": {
     "username": "root",
-    "password": "ymshin",
-    "database": "blogservice",
-    "host": "54.255.154.173",
+    "password": "134679",
+    "database": "muscat",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
   },

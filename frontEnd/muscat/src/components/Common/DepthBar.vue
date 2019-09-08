@@ -2,7 +2,7 @@
   <div class="toolbar-wrapper">
 
     <i class="muscat-icon-chevron-left" style="color: #707070;" @click="goBack"></i>
-    <i :class="icon" style="color: #e0e0e0;" @click="onClickIcon"></i>
+    <i :class="icon.name" :style="{ color: icon.color }" @click="onClickIcon"></i>
 
   </div>
 </template>
@@ -10,7 +10,11 @@
 <script>
   export default {
     name: 'DepthBar',
-    props: [ 'icon' ],
+    props: {
+      icon: {
+        type: Object,
+      }
+    },
     data () {
       return {
         keyword: '',
