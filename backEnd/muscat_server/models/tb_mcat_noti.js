@@ -1,19 +1,19 @@
 /* jshint indent: 1 */
 
 module.exports = function(sequelize, DataTypes) {
-	return sequelize.define('TB_MCAT_NOTI', {
+	const noti = sequelize.define('tb_mcat_noti', {
 		NOTI_ID: {
-			type: DataTypes.INTEGER(10).UNSIGNED,
+			type: DataTypes.BIGINT,
 			allowNull: false,
 			primaryKey: true,
 			autoIncrement: true
 		},
 		NOTI_USR_ID: {
-			type: DataTypes.INTEGER(5),
+			type: DataTypes.BIGINT,
 			allowNull: false
 		},
 		BLOG_ID: {
-			type: DataTypes.INTEGER(5),
+			type: DataTypes.BIGINT,
 			allowNull: true
 		},
 		NOTI_TYPE_CD: {
@@ -38,7 +38,8 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		CREATE_DTTM: {
 			type: DataTypes.DATE,
-			allowNull: false
+			defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+ 			allowNull: false
 		},
 		CREATE_ID: {
 			type: DataTypes.INTEGER(10),
@@ -46,13 +47,17 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		MODIFY_DTTM: {
 			type: DataTypes.DATE,
-			allowNull: false
+			defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+ 			allowNull: false
 		},
 		MODIFY_ID: {
 			type: DataTypes.INTEGER(10),
 			allowNull: false
 		}
 	}, {
-		tableName: 'TB_MCAT_NOTI'
+		tableName: 'tb_mcat_noti',
+		timestamps : false
 	});
+
+	return noti;
 };

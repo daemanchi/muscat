@@ -4,7 +4,9 @@
          :key="index"
          :class="{ active: selected === tab.value }"
          class="tab-item">
-      <i :class="[ tab.icon ]"></i>
+      <div class="icon-holder">
+        <i :class="tab.icon"></i>
+      </div>
       <div class="tab-name">{{ tab.name }}</div>
     </div>
   </div>
@@ -55,5 +57,11 @@
       line-height: 17px;
       margin-top: 4px;
     }
+  }
+
+  .icon-holder {
+    width: 24px;
+    height: 24px;
+    margin: auto;
   }
 </style>

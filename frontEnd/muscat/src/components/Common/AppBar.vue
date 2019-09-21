@@ -1,7 +1,8 @@
 <template>
   <div class="toolbar-wrapper">
     <div class="input-wrapper">
-      <i class="muscat-icon-search" style="color: #87bf8e;"></i>
+      <i v-if="keyword" class="muscat-icon-chevron-left" style="color: #707070;"></i>
+      <i v-else class="muscat-icon-search" style="color: #87bf8e;"></i>
       <input class="input" v-model="keyword" placeholder="검색어 입력" @keyup.enter="onEnter(keyword)">
       <i class="muscat-icon-cancel" style="color: #e0e0e0;" @click="onCancel"></i>
     </div>
@@ -21,6 +22,7 @@
         this.$emit('search', keyword);
       },
       onCancel () {
+        this.keyword = '';
         this.$emit('cancel');
       }
     }

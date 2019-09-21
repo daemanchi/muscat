@@ -1,15 +1,15 @@
 /* jshint indent: 1 */
 
 module.exports = function(sequelize, DataTypes) {
-	return sequelize.define('TB_MCAT_BLOG', {
+	const blog =  sequelize.define('tb_mcat_blog', {
 		BLOG_ID: {
-			type: DataTypes.INTEGER(10).UNSIGNED,
+			type: DataTypes.BIGINT,
 			allowNull: false,
 			primaryKey: true,
 			autoIncrement: true
 		},
 		USR_ID: {
-			type: DataTypes.INTEGER(10).UNSIGNED,
+			type: DataTypes.BIGINT,
 			allowNull: false
 		},
 		BLOG_TITLE: {
@@ -58,7 +58,8 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		CREATE_DTTM: {
 			type: DataTypes.DATE,
-			allowNull: false
+			defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+ 			allowNull: false
 		},
 		CREATE_ID: {
 			type: DataTypes.INTEGER(10),
@@ -66,13 +67,19 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		MODIFY_DTTM: {
 			type: DataTypes.DATE,
-			allowNull: false
+			defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+ 			allowNull: false
 		},
 		MODIFY_ID: {
 			type: DataTypes.INTEGER(10),
 			allowNull: false
 		}
 	}, {
-		tableName: 'TB_MCAT_BLOG'
+		tableName: 'tb_mcat_blog',
+		timestamps : false,
+		freezeTableName: true,
+		underscored: false
 	});
+
+	return blog;
 };

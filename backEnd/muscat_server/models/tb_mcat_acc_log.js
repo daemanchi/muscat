@@ -1,30 +1,26 @@
 /* jshint indent: 1 */
 
 module.exports = function(sequelize, DataTypes) {
-	return sequelize.define('TB_MCAT_STICKER_RULE', {
-		RULE_ID: {
-			type: DataTypes.INTEGER(10).UNSIGNED,
+	const log =  sequelize.define('tb_mcat_acc_log', {
+		LOG_NO: {
+			type: DataTypes.BIGINT,
 			allowNull: false,
 			primaryKey: true,
 			autoIncrement: true
 		},
-		STK_ID: {
-			type: DataTypes.INTEGER(10).UNSIGNED,
+		USR_ID: {
+			type: DataTypes.BIGINT,
 			allowNull: false
 		},
-		STK_RULE_TYPE_CD: {
-			type: DataTypes.CHAR(2),
+		ACC_DATE: {
+			type: DataTypes.STRING(100),
 			allowNull: false,
 			defaultValue: ''
 		},
-		USE_YN: {
-			type: DataTypes.CHAR(1),
-			allowNull: true,
-			defaultValue: 'N'
-		},
 		CREATE_DTTM: {
 			type: DataTypes.DATE,
-			allowNull: false
+			defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+ 			allowNull: false
 		},
 		CREATE_ID: {
 			type: DataTypes.INTEGER(10),
@@ -32,13 +28,17 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		MODIFY_DTTM: {
 			type: DataTypes.DATE,
-			allowNull: false
+			defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+ 			allowNull: false
 		},
 		MODIFY_ID: {
 			type: DataTypes.INTEGER(10),
 			allowNull: false
 		}
 	}, {
-		tableName: 'TB_MCAT_STICKER_RULE'
+		tableName: 'tb_mcat_acc_log',
+		timestamps : false
 	});
+
+	return log;
 };

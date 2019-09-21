@@ -1,9 +1,9 @@
 /* jshint indent: 1 */
 
 module.exports = function(sequelize, DataTypes) {
-	return sequelize.define('TB_MACT_USER', {
+  const user =  sequelize.define('tb_mcat_user', {
 		USR_ID: {
-			type: DataTypes.INTEGER(10).UNSIGNED,
+			type: DataTypes.BIGINT,
 			allowNull: false,
 			primaryKey: true,
 			autoIncrement: true
@@ -34,6 +34,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		CREATE_DTTM: {
 			type: DataTypes.DATE,
+			defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
 			allowNull: false
 		},
 		CREATE_ID: {
@@ -42,6 +43,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		MODIFY_DTTM: {
 			type: DataTypes.DATE,
+			defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
 			allowNull: false
 		},
 		MODIFY_ID: {
@@ -49,6 +51,10 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false
 		}
 	}, {
-		tableName: 'TB_MACT_USER'
+		tableName: 'tb_mcat_user',
+		timestamps : false
+
 	});
+
+	return user;
 };

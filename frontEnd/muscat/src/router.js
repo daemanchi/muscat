@@ -5,6 +5,7 @@ import Home from './components/Common/Home'
 import NotFound from './components/Common/NotFound'
 import PostList from './components/views/PostList'
 import PostView from './components/views/PostView'
+import WritePost from '@/views/WritePost';
 
 Vue.use(Router);
 
@@ -33,8 +34,11 @@ export default new Router({
             meta: {
                 goBack: true,
             },
+        },
+        {
+          path: '/write',
+          name: 'Write',
+          component: WritePost
         }
-
-    ],
+    ]
 });
-  
