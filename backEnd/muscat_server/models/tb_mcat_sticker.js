@@ -1,7 +1,7 @@
 /* jshint indent: 1 */
 
 module.exports = function(sequelize, DataTypes) {
-	return sequelize.define('tb_mcat_sticker', {
+	const sticker = sequelize.define('tb_mcat_sticker', {
 		STK_ID: {
 			type: DataTypes.BIGINT,
 			allowNull: false,
@@ -49,7 +49,8 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		CREATE_DTTM: {
 			type: DataTypes.DATE,
-			allowNull: false
+			defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+ 			allowNull: false
 		},
 		CREATE_ID: {
 			type: DataTypes.INTEGER(10),
@@ -57,13 +58,22 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		MODIFY_DTTM: {
 			type: DataTypes.DATE,
-			allowNull: false
+			defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+ 			allowNull: false
 		},
 		MODIFY_ID: {
 			type: DataTypes.INTEGER(10),
 			allowNull: false
 		}
 	}, {
-		tableName: 'tb_mcat_sticker'
+		tableName: 'tb_mcat_sticker',
+		timestamps : false
 	});
+	sticker.associate = function(models) {
+		//console.log(models)
+		sticker.hasMany(models.tb_mcat_rule, { foreignKey: "STK_ID"});
+
+	};
+
+	return sticker;
 };

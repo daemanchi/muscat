@@ -44,6 +44,6 @@ app.listen(port, function(){
 
 
 //app.use('/'     ,AuthRoutes);
-//app.use('/user' ,UserRoutes);
 app.use('/api/blog', BlogRoutes);
+app.use('/user' ,UserRoutes);
 //app.use('/noti' ,NotiRoutes);

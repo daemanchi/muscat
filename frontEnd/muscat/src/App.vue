@@ -25,10 +25,14 @@
 <!--      <Navigation :selected="`Home`" />-->
 <!--    </div>-->
 
+    <!-- <Login /> -->
+    <SignUp />
   </div>
 </template>
 
 <script>
+  // import Login from "./components/Login";
+  import SignUp from "./components/SignUp";
   import AppBar from '@/components/Common/AppBar';
   import DepthBar from '@/components/Common/DepthBar';
   import Dialog from '@/components/Common/Dialog';
@@ -38,7 +42,7 @@
   import { mapGetters, mapActions, mapMutations } from 'vuex';
 
   export default {
-    components: { DraftListItem, DepthBar, AppBar, Dialog, Navigation },
+    components: { SignUp, DraftListItem, DepthBar, AppBar, Dialog, Navigation },
     computed: {
       ...mapGetters('blog', ['drafts']),
     },
@@ -94,5 +98,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
+    color: #2c3e50;
   }
 </style>
