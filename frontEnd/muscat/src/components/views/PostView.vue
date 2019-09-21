@@ -2,11 +2,12 @@
   <div class="post_wrap">
     <div class="post_header">
       <div class="img_container">
-        <img :src="post.thumbnail" alt="포스트 썸네일" />
+        <img :src="blog.thumbnail" alt="포스트 썸네일" />
+        <!-- TODO: 썸네일 없는 경우 -->
       </div>
       <div class="header_desc">
-        <span class="date">{{ post.createAt }}</span>
-        <h1 class="title">{{ post.title }}</h1>
+        <span class="date">{{ blog.CREATE_DTTM }}</span>
+        <h1 class="title">{{ blog.BLOG_TITLE }}</h1>
       </div>
     </div>
     <div class="post_main">
@@ -15,15 +16,17 @@
           <!-- img -->
         </div>
         <div class="user_desc">
-          <strong class="username">{{ post.author }}</strong>
-          <span class="useremail">{{ post.useremail }}</span>
+          <!-- TODO: 백엔드 유저 정보 join -->
+          <strong class="username">{{ blog.USR_ID }}</strong>
+          <span class="useremail">{{ blog.USR_ID }}</span>
         </div>
       </div>
-      <span class="views">{{ post.views }} 번 조회</span>
-      <p class="post_content">{{ post.desc }}</p>
+      <span class="views">{{ blog.BLOG_VIEW_CNT }} 번 조회</span>
+      <p class="post_content">{{ blog.BLOG_CONTENTS }}</p>
       <div class="btn_wrap">
-        <button type="button" class="btn_like" @click="likePost()">
-          <i :class="[this.$store.state.postLiked ? 'muscat-icon-heart-solid' : 'muscat-icon-heart-regular']" style="color: #87bf8e;"></i>
+        <button type="button" class="btn_like">
+<!--          <i :class="[$store.state.postLiked ? 'muscat-icon-heart-solid' : 'muscat-icon-heart-regular']" style="color: #87bf8e;"></i>-->
+          <i class="muscat-icon-heart-regular" style="color: #87bf8e;"></i>
         </button>
         <button type="button" class="btn_share">
           <i class="muscat-icon-share" style="color:#b8f2be;"></i>
@@ -34,25 +37,24 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapMutations } from 'vuex'
 
 export default {
-  data() {
-    return {
-      post: {}
-    }
-  },
   computed: {
-    ...mapGetters(['fetchData']),
+    ...mapGetters('blog', [ 'blog' ]),
   },
   created() {
-    const id = this.$route.params.id - 1;
-    this.post = this.fetchData(id)
+    this.selectBlog(this.$route.params.id).then(response => {
+      console.log(response.data);
+      this.SELECT_BLOG(response);
+    });
   },
   methods: {
-    likePost() {
-      this.$store.commit('TOGGLE_LIKED', this.liked)
-    }
+    ...mapActions('blog', [ 'selectBlog' ]),
+    ...mapMutations('blog', [ 'SELECT_BLOG' ]),
+    // likePost() {
+    //   this.$store.commit('TOGGLE_LIKED', this.liked)
+    // }
   }
 };
 </script>

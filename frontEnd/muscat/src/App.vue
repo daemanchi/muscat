@@ -7,20 +7,20 @@
       <Navigation></Navigation>
     </div>
 
-    <Dialog v-show="dialog"
-            @close="dialog = false"
-            @onClickMore="selectMoreDraft"
-    >
-      <template v-slot:title>
-        <span>작성중이던 글 불러오기</span>
-      </template>
-      <template v-slot:content>
-        <DraftListItem v-for="(draft, index) of drafts" :key="index"
-                       @onClickItem="onClickDraft(draft.BLOG_ID)"
-                       :title="draft.BLOG_TITLE"
-                       :contents="draft.BLOG_CONTENTS" />
-      </template>
-    </Dialog>
+<!--    <Dialog v-show="dialog"-->
+<!--            @close="dialog = false"-->
+<!--            @onClickMore="selectMoreDraft"-->
+<!--    >-->
+<!--      <template v-slot:title>-->
+<!--        <span>작성중이던 글 불러오기</span>-->
+<!--      </template>-->
+<!--      <template v-slot:content>-->
+<!--        <DraftListItem v-for="(draft, index) of drafts" :key="index"-->
+<!--                       @onClickItem="onClickDraft(draft.BLOG_ID)"-->
+<!--                       :title="draft.BLOG_TITLE"-->
+<!--                       :contents="draft.BLOG_CONTENTS" />-->
+<!--      </template>-->
+<!--    </Dialog>-->
   </div>
 </template>
 
@@ -34,7 +34,7 @@ export default {
   components: {
     AppBar,
     GoBack,
-    Navigation
+    Navigation,
   }
 };
 </script>
@@ -52,7 +52,7 @@ html, body, h1, h2, h3, h4, h5, h6, ul, li, p, button, input {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /*text-align: center;*/
   color: #2c3e50;
 }
 </style>

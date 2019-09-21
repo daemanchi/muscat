@@ -2,15 +2,16 @@
     <div class="postlist">
         <h2 class="category">인기글</h2>
         <ul>
-            <li v-for="post in list" :key="post.id"
-                @click.prevent="$router.push(`/post/${post.id}`)"
+            <li v-for="post in blogs" :key="post.BLOG_ID"
+                @click.prevent="$router.push(`/post/${post.BLOG_ID}`)"
                 class="post_item">
                 <div class="post_thumbnail">
                     <img :src="post.thumbnail" alt="포스트 썸네일">
+                    <!-- TODO: 썸네일 없는 경우 -->
                 </div>
                 <div class="post_content">
-                    <strong class="post_title">{{ post.title }}</strong>
-                    <p class="post_desc">{{ post.desc }}</p>
+                    <strong class="post_title">{{ post.BLOG_TITLE }}</strong>
+                    <p class="post_desc">{{ post.BLOG_CONTENTS }}</p>
                 </div>
             </li>
         </ul>
@@ -18,22 +19,25 @@
 </template>
 
 <script>
-import list from "@/assets/data/data.js";
-export default {
-    data () {
-        return{
-            list: {}
-        }
-    },
-    created () {
-        this.fetchData()
-    },
-    methods: {
-        fetchData () {
-            this.list = list
+    import { mapGetters, mapActions, mapMutations } from 'vuex';
+
+    export default {
+        computed: {
+            ...mapGetters('blog', [ 'blogs' ]),
+        },
+        // data () {
+        // },
+        created () {
+            this.selectBlogs({ page:1 , count: 10 }).then(response => {
+                console.log(response.data);
+                this.SELECT_BLOGS({ response });
+            });
+        },
+        methods: {
+            ...mapActions('blog', [ 'selectBlogs' ]),
+            ...mapMutations('blog', [ 'SELECT_BLOGS' ]),
         }
     }
-}
 </script>
 
 <style scoped>
