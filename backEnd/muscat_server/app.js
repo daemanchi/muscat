@@ -10,7 +10,6 @@ const BlogRoutes = require( './routes/blog/index');
 const NotiRoutes = require( './routes/noti/index');
 const UserRoutes = require( './routes/user/index');
 const Sequelize = require('sequelize');
-
 // const SequelizeAuto = require('sequelize-auto');
 // const auto = new SequelizeAuto('muscat', 'root', '134679', {
 //   host:'127.0.0.1',

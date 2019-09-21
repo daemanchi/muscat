@@ -1,15 +1,11 @@
 <template>
   <div class="toolbar-wrapper">
-
     <div class="input-wrapper">
-
       <i v-if="keyword" class="muscat-icon-chevron-left" style="color: #707070;"></i>
       <i v-else class="muscat-icon-search" style="color: #87bf8e;"></i>
       <input class="input" v-model="keyword" placeholder="검색어 입력" @keyup.enter="onEnter(keyword)">
       <i class="muscat-icon-cancel" style="color: #e0e0e0;" @click="onCancel"></i>
-
     </div>
-
   </div>
 </template>
 
@@ -36,14 +32,11 @@
 <style lang="scss" scoped>
   .toolbar-wrapper {
     background-color: #f5f5f5;
-
     box-sizing: border-box;
-
     width: 100vw;
     height: 55px;
     padding: 8px;
     border-bottom: 1px solid #e0e0e0;
-
     display: flex;
     align-items: center;
     justify-content: center;

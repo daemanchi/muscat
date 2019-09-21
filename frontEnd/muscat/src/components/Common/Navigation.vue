@@ -1,20 +1,15 @@
 <template>
   <div class="toolbar-wrapper">
-
     <div v-for="(tab, index) of tabs"
          :key="index"
          :class="{ active: selected === tab.value }"
          class="tab-item">
-
       <div class="icon-holder">
         <i :class="tab.icon"></i>
       </div>
       <div class="tab-name">{{ tab.name }}</div>
-
     </div>
-
   </div>
-
 </template>
 
 <script>
@@ -38,13 +33,10 @@
   .toolbar-wrapper {
     background-color: white;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-
     box-sizing: border-box;
-
     width: 100vw;
     height: 56px;
     padding: 8px;
-
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -63,6 +55,7 @@
     .tab-name {
       font-size: 14px;
       line-height: 17px;
+      margin-top: 4px;
     }
   }
 
