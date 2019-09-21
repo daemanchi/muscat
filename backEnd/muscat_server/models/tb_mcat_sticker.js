@@ -71,7 +71,7 @@ module.exports = function(sequelize, DataTypes) {
 	});
 	sticker.associate = function(models) {
 		//console.log(models)
-		sticker.hasMany(models.tb_mcat_rule, { foreignKey: "STK_ID"});
+		// sticker.hasMany(models.tb_mcat_rule, { foreignKey: "STK_ID"});
 
 	};
 
