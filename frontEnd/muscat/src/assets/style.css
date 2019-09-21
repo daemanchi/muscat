@@ -1,0 +1,76 @@
+@font-face {
+  font-family: 'muscat';
+  src:
+    url('fonts/muscat.ttf?cxyizq') format('truetype'),
+    url('fonts/muscat.woff?cxyizq') format('woff'),
+    url('fonts/muscat.svg?cxyizq#muscat') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'muscat' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.muscat-icon-award:before {
+  content: "\e900";
+}
+.muscat-icon-bell:before {
+  content: "\e901";
+}
+.muscat-icon-camera:before {
+  content: "\e902";
+}
+.muscat-icon-checkbox-checked:before {
+  content: "\e903";
+}
+.muscat-icon-chevron-left:before {
+  content: "\e904";
+}
+.muscat-icon-cog:before {
+  content: "\e905";
+}
+.muscat-icon-feed:before {
+  content: "\e906";
+}
+.muscat-icon-feather:before {
+  content: "\e907";
+}
+.muscat-icon-folder:before {
+  content: "\e908";
+}
+.muscat-icon-heart-regular:before {
+  content: "\e909";
+}
+.muscat-icon-heart-solid:before {
+  content: "\e90a";
+}
+.muscat-icon-home:before {
+  content: "\e90b";
+}
+.muscat-icon-search:before {
+  content: "\e90c";
+}
+.muscat-icon-share:before {
+  content: "\e90d";
+}
+.muscat-icon-smile:before {
+  content: "\e90e";
+}
+.muscat-icon-checkbox:before {
+  content: "\e90f";
+}
+.muscat-icon-cancel:before {
+  content: "\e910";
+}

@@ -1,28 +1,35 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="wrap">
+      <GoBack v-if="$route.meta.goBack"></GoBack>
+      <AppBar v-else></AppBar>
+      <router-view></router-view>
+      <Navigation></Navigation>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppBar from "./components/Common/AppBar"
+import GoBack from "./components/Common/GoBackBar"
+import Navigation from "./components/Common/Navigation"
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    AppBar,
+    GoBack,
+    Navigation
   }
-}
+};
 </script>
 
 <style>
+html, body, h1, h2, h3, h4, h5, h6, ul, li, p{
+    margin: 0;
+    padding: 0;
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  background-color: rgb(249,249,249);
 }
 </style>

@@ -11,6 +11,7 @@ const NotiRoutes = require( './routes/noti/index');
 const UserRoutes = require( './routes/user/index');
 const Sequelize = require('sequelize');
 /*
+// sequelize-auto 키워드로 검색해서 muscat, root로 변경
 const SequelizeAuto = require('sequelize-auto');
 const auto = new SequelizeAuto('blogservice','root','ymshin',{
   host:'54.255.154.173',
