@@ -93,7 +93,7 @@
           <!--버튼-->
           <div class="btn-wrap">
             <div class="signin-wrap">
-              <button class="btn" @click="login">가입하기</button>
+              <button class="btn" @click="signUp">가입하기</button>
             </div>
           </div>
         </div>
@@ -220,12 +220,44 @@ export default {
     // },
     // nameOkViewStyle() {
     //   this.nameErrView = "none";
-    // },
-    login() {
+    // }, 
+    signUp() {
       this.nameKeyup();
       this.idKeyup();
       this.pwKeyup();
       this.pw2Keyup();
+       
+        // var token = this.$store.state.auth.token
+        // var xhr = new XMLHttpRequest();
+        // xhr.open('post','http://localhost:9000/signup',true);
+        // xhr.onreadystatechange = ()=>{
+        //   if(xhr.readyState === 4 && (xhr.status ===200 || xhr.status ===201)){
+        //     this.$router.push({name:'Login'})
+        //   }else if(xhr.readyState === 4 && xhr.status !==200){
+        //     alert('중복된 이메일입니다. 다른 이메일로 입력하시기 바랍니다.')
+        //   }
+        // }
+        // // var params = 'token='+token+'&content='+this.content
+        // xhr.setRequestHeader('Content-type', 'application/json');
+        // xhr.send(JSON.stringify({
+        //   userName: this.userName,
+        //   password: this.userPwd,
+        //   userId: this.userId
+        // }))
+
+      this.$axios.post(`http://localhost:9000/signup`,
+        {
+          userName: this.userName,
+          password: this.userPwd,
+          userId: this.userId
+        }
+        )
+        .then((result) => {
+          this.$router.push({name:'Login'})
+        })
+        .catch((err) => {
+          alert('중복된 이메일입니다. 다른 이메일로 입력하시기 바랍니다.')
+        })
     }
   }
 };

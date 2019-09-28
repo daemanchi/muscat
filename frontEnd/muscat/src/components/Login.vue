@@ -44,10 +44,10 @@
           <!--버튼-->
           <div class="btn-wrap">
             <div class="signin-wrap">
-              <button class="btn">로그인</button>
+              <button class="btn" @click="login">로그인</button>
             </div>
             <div class="signin-wrap">
-              <button class="btn">회원가입</button>
+              <button class="btn" @click="signUp">회원가입</button>
             </div>
           </div>
         </div>
@@ -115,6 +115,38 @@ export default {
     login() {
       this.idKeydown();
       this.pwKeydown();
+
+      //xhr
+      //  var xhr = new XMLHttpRequest();
+      //   xhr.open('post','http://localhost:9000/login',true);
+      //   xhr.onreadystatechange = ()=>{
+      //     if(xhr.readyState === 4 && (xhr.status ===200 || xhr.status ===201)){
+      //       this.$router.push({name:'PostList'})
+      //     }else if(xhr.readyState === 4 && xhr.status !==200){
+      //       alert('로그인 정보를 확인하시기 바랍니다.')
+      //     }
+      //   } 
+        // var params = 'token='+token+'&content='+this.content
+        // xhr.setRequestHeader('Content-type', 'application/json');
+        // xhr.send(JSON.stringify({
+        //  userId : this.userId, 
+        //  password : this.userPwd
+        // }))
+
+        this.$axios.post(`http://localhost:9000/login`,
+        {
+         userId : this.userId, 
+         password : this.userPwd
+        })
+        .then((result) => {
+          this.$router.push({name:'PostList'})
+        })
+        .catch((err) => {
+          alert('로그인 정보를 확인하시기 바랍니다.')
+        })
+    },
+    signUp() {
+      this.$router.push({name:'SignUp'})
     }
   }
 };

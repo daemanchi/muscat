@@ -11,10 +11,11 @@ module.exports = function(sequelize, DataTypes) {
 		USR_EMAIL: {
 			type: DataTypes.STRING(100),
 			allowNull: false,
+			unique: true,
 			defaultValue: ''
 		},
 		USR_PASSWORD: {
-			type: DataTypes.STRING(100),
+			type: DataTypes.STRING(256),
 			allowNull: false,
 			defaultValue: ''
 		},
@@ -30,11 +31,12 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		USR_STAT_CD: {
 			type: DataTypes.CHAR(2),
-			allowNull: false
+			allowNull: false,
+			defaultValue: '02'
 		},
 		CREATE_DTTM: {
-			type: DataTypes.DATE,
-			defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+			type: DataTypes.TIME,
+			defaultValue: DataTypes.NOW,
 			allowNull: false
 		},
 		CREATE_ID: {
@@ -42,8 +44,8 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false
 		},
 		MODIFY_DTTM: {
-			type: DataTypes.DATE,
-			defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+			type: DataTypes.TIME,
+			defaultValue: DataTypes.NOW,
 			allowNull: false
 		},
 		MODIFY_ID: {

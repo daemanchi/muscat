@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "134679",
-    "database": "muscat",
-    "host": "127.0.0.1",
+    "username": "b9d5c9ed21dddb",
+    "password": "1dda742f",
+    "database": "heroku_ac3253d5cec0840",
+    "host": "us-cdbr-iron-east-02.cleardb.net",
     "dialect": "mysql",
     "operatorsAliases": false,
     "define": {
