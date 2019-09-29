@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const models = require('../../models');
-
+const Sequelize = require('sequelize');
 // 목록 조회
 router.get('/', function (req, res, next) {
   // console.log(req.query);
@@ -60,5 +60,41 @@ router.patch('/:id', function(req, res, next) {
     console.error(err);
   });
 });
+//const resultJson = null
+router.post('/rule',(req, res, next) => {
+    let t = null
+    let param = req.body;
+    console.log(param);
 
+    models.sequelize.transaction().then( transaction => {
+      t = transaction;
+      //이미 시작된 목표가 있나 없나 검증.
+      
+      return models.sticker.create(param.sticker, {isNewRecord:true, transaction: t})
+    }).then( (result) =>{
+      console.log(result.stkId)
+      ruleList = [];
+      param.rules.forEach((item) => {
+        console.log(item)
+        ruleList.push({
+           stkId: result.stkId
+          ,stkRuleTypeCd : item
+          ,useYn : 'Y'
+        })
+      })
+
+      return models.stickerRule.bulkCreate(ruleList, {individualHooks:true, transaction: t})
+      //res.json(result)
+    }).then((result) =>{
+      t.commit()
+      res.json(result)
+    }).catch((err) => {
+      console.log(err)
+      if(t) {
+       t.rollback() 
+      }
+    });
+
+})
 module.exports = router;
+

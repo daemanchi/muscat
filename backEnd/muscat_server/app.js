@@ -2,14 +2,13 @@ const express = require('express');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const bodyParser = require( 'body-parser');
-
-const morgan       = require("morgan");
+const morgan     = require("morgan");
 const cors = require( 'cors');
 const AuthRoutes = require( './routes/auth/index');
 const BlogRoutes = require( './routes/blog/index');
 const NotiRoutes = require( './routes/noti/index');
 const UserRoutes = require( './routes/user/index');
-const Sequelize = require('sequelize');
+//const Sequelize = require('sequelize');
 // const SequelizeAuto = require('sequelize-auto');
 // const auto = new SequelizeAuto('muscat', 'root', '134679', {
 //   host:'127.0.0.1',
@@ -18,10 +17,9 @@ const Sequelize = require('sequelize');
 // auto.run((err)=>{
 //   if(err) throw err;
 // });
-
+const logInterceptor = require('./middlewares/logInterceptor');
 // ENV
 require('dotenv').config();
-
 const app = express();
 app.use(morgan("dev")); // 모든 요청을 console에 기록
 app.use(express.static('public'));
@@ -35,14 +33,12 @@ app.use(session({
 }));
 app.use(cors());
 const port = process.env.PORT || 4500;
-
 app.listen(port, function(){
     console.log("Express Server has Started on port "+port)
 });
 
-
-
-app.use('/'     ,AuthRoutes);
+app.use(logInterceptor);
+app.use('/'        , AuthRoutes);
 app.use('/api/blog', BlogRoutes);
-app.use('/user' ,UserRoutes);
-//app.use('/noti' ,NotiRoutes);
+app.use('/user'    , UserRoutes);
+app.use('/blog'    , BlogRoutes);

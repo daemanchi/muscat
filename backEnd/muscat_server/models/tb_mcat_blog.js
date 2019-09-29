@@ -1,85 +1,86 @@
 /* jshint indent: 1 */
 
 module.exports = function(sequelize, DataTypes) {
-	const blog =  sequelize.define('tb_mcat_blog', {
-		BLOG_ID: {
+	return sequelize.define('blog', {
+		blogId: {
 			type: DataTypes.BIGINT,
 			allowNull: false,
 			primaryKey: true,
 			autoIncrement: true
 		},
-		USR_ID: {
+		usrId: {
 			type: DataTypes.BIGINT,
 			allowNull: false
 		},
-		BLOG_TITLE: {
+		blogTitle: {
 			type: DataTypes.STRING(100),
 			allowNull: false,
 			defaultValue: ''
 		},
-		BLOG_CONTENTS: {
+		blogContents: {
 			type: DataTypes.TEXT,
 			allowNull: false
 		},
-		BLOG_STAT_CD: {
+		blogStatCd: {
 			type: DataTypes.CHAR(2),
 			allowNull: false,
 			defaultValue: ''
 		},
-		BLOG_TYPE_CD: {
+		blogTypeCd: {
 			type: DataTypes.CHAR(2),
 			allowNull: true,
 			defaultValue: ''
 		},
-		BLOG_HASH_TAG: {
+		blogHashTag: {
 			type: DataTypes.STRING(200),
 			allowNull: true,
 			defaultValue: ''
 		},
-		BLOG_ATTA_FILE: {
+		blogAttaFile: {
 			type: DataTypes.STRING(100),
 			allowNull: true,
 			defaultValue: ''
 		},
-		BLOG_LIKE_CNT: {
+		blogLikeCnt: {
 			type: DataTypes.INTEGER(5),
 			allowNull: true,
 			defaultValue: '0'
 		},
-		BLOG_VIEW_CNT: {
+		blogViewCnt: {
 			type: DataTypes.INTEGER(5),
 			allowNull: true,
 			defaultValue: '0'
 		},
-		USE_YN: {
+		useYn: {
 			type: DataTypes.CHAR(1),
 			allowNull: true,
 			defaultValue: 'N'
 		},
-		CREATE_DTTM: {
+		createDttm: {
 			type: DataTypes.DATE,
-			defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
- 			allowNull: false
+			allowNull: false,
+			defaultValue: DataTypes.NOW
 		},
-		CREATE_ID: {
+		createId: {
 			type: DataTypes.INTEGER(10),
-			allowNull: false
+			allowNull: false,
+			defaultValue: 999999
 		},
-		MODIFY_DTTM: {
+		modifyDttm: {
 			type: DataTypes.DATE,
-			defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
- 			allowNull: false
+			allowNull: false,
+			defaultValue: DataTypes.NOW
 		},
-		MODIFY_ID: {
+		modifyId: {
 			type: DataTypes.INTEGER(10),
-			allowNull: false
+			allowNull: false,
+			defaultValue: 999999
 		}
 	}, {
 		tableName: 'tb_mcat_blog',
 		timestamps : false,
 		freezeTableName: true,
 		underscored: false
-	});
 
-	return blog;
+	});
 };

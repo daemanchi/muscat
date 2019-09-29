@@ -8,6 +8,9 @@ import PostView from './components/views/PostView'
 import WritePost from '@/views/WritePost';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
+import MyPage from '@/components/Mypage/MyPage'
+import MyStickerSetting from '@/components/Mypage/MyStickerSetting'
+import MypageDashboard from '@/components/Mypage/MypageDashboard'
 
 Vue.use(Router);
 
@@ -51,6 +54,19 @@ export default new Router({
           path: '',
           name: 'Write',
           component: WritePost
+        },
+        {  name:'notFound' 
+         , path: '/notFound'
+         , component: Home 
+        },
+        {  name:'mypage'   
+        , path:'/mypage'
+        , component : MyPage
+        , props: true
+        , children : [{path: 'detail', component: MypageDashboard, props: true}
+                     ,{path: 'myStickerSetting', component: MyStickerSetting, props: true}]
         }
+    
+        
     ]
 });

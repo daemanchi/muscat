@@ -1,62 +1,63 @@
 /* jshint indent: 1 */
 
 module.exports = function(sequelize, DataTypes) {
-  const user =  sequelize.define('tb_mcat_user', {
-		USR_ID: {
+	const user = sequelize.define('user', {
+		usrId: {
 			type: DataTypes.BIGINT,
 			allowNull: false,
 			primaryKey: true,
 			autoIncrement: true
 		},
-		USR_EMAIL: {
+		usrEmail: {
 			type: DataTypes.STRING(100),
 			allowNull: false,
 			unique: true,
 			defaultValue: ''
 		},
-		USR_PASSWORD: {
-			type: DataTypes.STRING(256),
-			allowNull: false,
-			defaultValue: ''
-		},
-		USR_NICK_NAME: {
+		usrPassword: {
 			type: DataTypes.STRING(100),
 			allowNull: false,
 			defaultValue: ''
 		},
-		USR_PHOTOFILE: {
+		usrNickName: {
+			type: DataTypes.STRING(100),
+			allowNull: false,
+			defaultValue: ''
+		},
+		usrPhtofile: {
 			type: DataTypes.STRING(100),
 			allowNull: true,
 			defaultValue: ''
 		},
-		USR_STAT_CD: {
+		usrStatCd: {
 			type: DataTypes.CHAR(2),
 			allowNull: false,
 			defaultValue: '02'
 		},
-		CREATE_DTTM: {
-			type: DataTypes.TIME,
-			defaultValue: DataTypes.NOW,
+		createDttm: {
+			type: DataTypes.DATE,
 			allowNull: false
 		},
-		CREATE_ID: {
+		createDttm: {
+			type: DataTypes.DATE,
+			allowNull: false,
+			defaultValue: DataTypes.NOW
+		},
+		createId: {
 			type: DataTypes.INTEGER(10),
-			allowNull: false
+			allowNull: false,
+			defaultValue: 999999
 		},
-		MODIFY_DTTM: {
-			type: DataTypes.TIME,
-			defaultValue: DataTypes.NOW,
-			allowNull: false
-		},
-		MODIFY_ID: {
+		modifyId: {
 			type: DataTypes.INTEGER(10),
-			allowNull: false
+			allowNull: false,
+			defaultValue: 999999
 		}
 	}, {
-		tableName: 'tb_mcat_user',
-		timestamps : false
-
-	});
+		tableName: 'tb_mcat_user'
+	   ,timestamps: false
+	}
+);
 
 	return user;
 };
