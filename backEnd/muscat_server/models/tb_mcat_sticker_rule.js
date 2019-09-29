@@ -1,39 +1,25 @@
 /* jshint indent: 1 */
 
 module.exports = function(sequelize, DataTypes) {
-	return sequelize.define('tb_mcat_noti', {
-		notiId: {
+	return sequelize.define('tb_mcat_sticker_rule', {
+		ruleId: {
 			type: DataTypes.BIGINT,
 			allowNull: false,
 			primaryKey: true,
 			autoIncrement: true
 		},
-		notiUsrId: {
+		stkId: {
 			type: DataTypes.BIGINT,
 			allowNull: false
 		},
-		blogId: {
-			type: DataTypes.BIGINT,
-			allowNull: true
-		},
-		notiTypeCd: {
-			type: DataTypes.CHAR(2),
-			allowNull: true,
-			defaultValue: ''
-		},
-		notiMsgCd: {
+		stkRuleTypeCd: {
 			type: DataTypes.CHAR(2),
 			allowNull: false,
 			defaultValue: ''
-		},
-		readYn: {
-			type: DataTypes.CHAR(1),
-			allowNull: false,
-			defaultValue: 'N'
 		},
 		useYn: {
 			type: DataTypes.CHAR(1),
-			allowNull: false,
+			allowNull: true,
 			defaultValue: 'N'
 		},
 		createDttm: {
@@ -53,6 +39,6 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false
 		}
 	}, {
-		tableName: 'tb_mcat_noti'
+		tableName: 'tb_mcat_sticker_rule'
 	});
 };

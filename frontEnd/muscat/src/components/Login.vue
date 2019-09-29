@@ -56,7 +56,7 @@
   </div>
 </template>
 
-<script>  
+<script>
 export default {
   data() {
     return {
@@ -66,11 +66,11 @@ export default {
       userPwMsg: "",
       idErrView: "none",
       pwErrView: "none"
-    }; 
+    };
   },
   methods: {
     idKeydown() {
-      var u_email = this.userId; 
+      var u_email = this.userId;
       if (!u_email) {
         //this.$refs.userId.$el.focus(); //포커스 하는 방법
         this.userIdMsg = "이메일 주소가 입력되지 않았습니다";
@@ -86,12 +86,12 @@ export default {
       }
     },
     validEmail(email) {
-      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      var re = /\S+@\S+\.\S+/;
       return re.test(email);
     },
     pwKeydown() {
       var u_pwd = this.userPwd;
-      if (u_pwd == "") {
+      if (u_pwd === "") {
         this.userPwMsg = "비밀번호가 입력되지 않았습니다.";
         this.pwErrViewStyle();
         return false;
@@ -125,23 +125,25 @@ export default {
       //     }else if(xhr.readyState === 4 && xhr.status !==200){
       //       alert('로그인 정보를 확인하시기 바랍니다.')
       //     }
-      //   } 
+      //   }
         // var params = 'token='+token+'&content='+this.content
         // xhr.setRequestHeader('Content-type', 'application/json');
         // xhr.send(JSON.stringify({
-        //  userId : this.userId, 
+        //  userId : this.userId,
         //  password : this.userPwd
         // }))
 
         this.$axios.post(`http://localhost:9000/login`,
         {
-         userId : this.userId, 
+         userId : this.userId,
          password : this.userPwd
         })
         .then((result) => {
+          console.log(result);
           this.$router.push({name:'PostList'})
         })
         .catch((err) => {
+          console.error(err);
           alert('로그인 정보를 확인하시기 바랍니다.')
         })
     },

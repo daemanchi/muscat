@@ -11,8 +11,8 @@ const NotiRoutes = require( './routes/noti/index');
 const UserRoutes = require( './routes/user/index');
 const Sequelize = require('sequelize');
 // const SequelizeAuto = require('sequelize-auto');
-// const auto = new SequelizeAuto('muscat', 'root', '134679', {
-//   host:'127.0.0.1',
+// const auto = new SequelizeAuto('heroku_9e07b0470cfcf6a', 'bc3a50d92f87f3', 'b09b0e1a', {
+//   host:'us-cdbr-iron-east-02.cleardb.net',
 //   port:'3306'
 // });
 // auto.run((err)=>{
@@ -40,9 +40,7 @@ app.listen(port, function(){
     console.log("Express Server has Started on port "+port)
 });
 
-
-
-app.use('/'     ,AuthRoutes);
+app.use('/api/user'     ,AuthRoutes);
 app.use('/api/blog', BlogRoutes);
-app.use('/user' ,UserRoutes);
+app.use('/api/sticker' ,UserRoutes);
 //app.use('/noti' ,NotiRoutes);

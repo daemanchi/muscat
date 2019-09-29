@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const models = require('../../models');
-const Sequelize = require('sequelize');
+const sequelize = require('sequelize');
 //사용자 설정 데이터 가져오기
 router.get('/sticker/:usr_id',(req, res, next) => {
     const userId = req.params.usr_id;

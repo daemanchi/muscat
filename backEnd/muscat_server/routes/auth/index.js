@@ -14,11 +14,11 @@ router.post('/signup', (req, res) => {
 
     sequelize.transaction(() => {
         return User.create({
-            USR_EMAIL: userId,
-            USR_PASSWORD: createPasswordHash(password),
-            USR_NICK_NAME: userName,
-            CREATE_ID: 0,
-            MODIFY_ID: 0
+            usrId: userId,
+            usrPassword: createPasswordHash(password),
+            usrNickName: userName,
+            createId: 0,
+            modifyId: 0
         })
     })
     .then(() => {
@@ -37,16 +37,16 @@ router.post('/login', (req, res) => {
     sequelize.transaction(() => {
         return User.findOne({
             attributes: [
-                'USR_ID',
-                'USR_EMAIL',
-                'USR_NICK_NAME',
-                'USR_PHOTOFILE',
-                'USR_STAT_CD',
-                'CREATE_DTTM'
+                'usrId',
+                'usrEmail',
+                'usrNickName',
+                'usrPhotoFile',
+                'usrStatCd',
+                'createDttm'
             ],
             where: {
-                USR_EMAIL: userId,
-                USR_PASSWORD: createPasswordHash(password)
+                usrEmail: userId,
+                usrPassword: createPasswordHash(password)
             }
         })
     })
